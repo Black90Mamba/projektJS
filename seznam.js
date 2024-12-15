@@ -149,3 +149,9 @@ filmy.forEach((film) => {
   seznamElement.innerHTML += karta
 })
 
+
+
+
+
+
+
