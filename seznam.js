@@ -120,34 +120,31 @@ const filmy = [
 ]
 
 
+const seznamElement = document.querySelector('#seznam-filmu')
 
-const seznamElement = document.querySelector("#seznam-filmu")
-
-seznamElement.innerHTML = ""
-
-
-filmy.forEach((film) => {
+filmy.forEach(film => {
   const karta = `
     <div class="col">
       <div class="card">
         <img
-          src="${film.plakat.url}" 
-          width="${film.plakat.sirka}" 
-          height="${film.plakat.vyska}" 
-          class="card-img-top" 
-          alt="plakát"
+          src="${film.plakat.url}"
+          width="${film.plakat.sirka}"
+          height="${film.plakat.vyska}"
+          class="card-img-top"
+          alt="Plakát filmu ${film.nazev}"
         />
         <div class="card-body">
           <h5 class="card-title">${film.nazev}</h5>
-          <p class="card-text">${film.ochutnavka}</p>
-          <a href="film.html#${film.id}" class="btn btn-primary">Přehrát</a>
+          <p class="card-text">${film.popis}</p>
+          <a href="film.html#${film.id}" class="btn btn-primary">Detail</a>
         </div>
       </div>
     </div>
-  `;
-
+  `
   seznamElement.innerHTML += karta
 })
+
+
 
 
 

@@ -196,3 +196,70 @@ document.addEventListener('DOMContentLoaded', () => {
     })
   })
 })
+
+function zvyrazniHvezdicky(pocet) {
+  const hvezdicky = document.querySelectorAll('.fa-star')
+  
+  hvezdicky.forEach((hvezdicka, index) => {
+    if (index < pocet) {
+      hvezdicka.classList.remove('far') 
+      hvezdicka.classList.add('fas')   
+    } else {
+      hvezdicka.classList.remove('fas') 
+      hvezdicka.classList.add('far')   
+    }
+  })
+}
+
+
+function nastavPosluchaceHvezdickam() {
+  const hvezdicky = document.querySelectorAll('.fa-star')
+  
+  hvezdicky.forEach(hvezdicka => {
+    hvezdicka.addEventListener('click', () => {
+      const poradi = parseInt(hvezdicka.textContent)
+      zvyrazniHvezdicky(poradi) 
+    })
+  })
+}
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  nastavPosluchaceHvezdickam()
+})
+let posledniKliknuteHvezdicky = 0
+
+function zvyrazniHvezdicky(pocet) {
+  const hvezdicky = document.querySelectorAll('.fa-star')
+  hvezdicky.forEach((hvezdicka, index) => {
+    if (index < pocet) {
+      hvezdicka.classList.remove('far')
+      hvezdicka.classList.add('fas')
+    } else {
+      hvezdicka.classList.remove('fas')
+      hvezdicka.classList.add('far')
+    }
+  })
+}
+
+function nastavPosluchaceHvezdickam() {
+  const hvezdicky = document.querySelectorAll('.fa-star')
+  hvezdicky.forEach(hvezdicka => {
+    hvezdicka.addEventListener('mouseenter', () => {
+      const poradi = parseInt(hvezdicka.textContent)
+      zvyrazniHvezdicky(poradi)
+    })
+    hvezdicka.addEventListener('mouseleave', () => {
+      zvyrazniHvezdicky(posledniKliknuteHvezdicky)
+    })
+    hvezdicka.addEventListener('click', () => {
+      const poradi = parseInt(hvezdicka.textContent)
+      posledniKliknuteHvezdicky = poradi
+      zvyrazniHvezdicky(poradi)
+    })
+  })
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  nastavPosluchaceHvezdickam()
+})
